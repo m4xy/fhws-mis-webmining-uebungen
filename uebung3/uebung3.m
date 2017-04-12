@@ -5,8 +5,15 @@ irisTargets = data.irisTargets'
 
 %2d
 %plot(irisInputs)
+%plot(irisInputs(:,1),irisInputs(:,2),'bo')
 %3d
 %surf(irisInputs)
+
+mittelwert = mean(irisInputs);
+standardabweichung = std(irisInputs);
+
+bsxfun(@minus, irisInputs, mittelwert); %könnte auch mit for schleife gelöst werdens
+mean(bsxfun(@minus, irisInputs, mittelwert)) %ist 0, passt also scheinbar
 
 irisInputs_norm = irisInputs ./ max(max(irisInputs));
 irisTargets_norm = irisTargets ./ max(max(irisTargets));
